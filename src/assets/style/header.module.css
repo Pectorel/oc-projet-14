@@ -1,0 +1,31 @@
+#header{
+    width: 100%;
+    background: #93AD18;
+    padding: 1rem 0;
+
+    & nav{
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 4rem;
+
+        & .title{
+
+            & a{
+                display: flex;
+                align-items: center;
+                gap: .5rem;
+
+                & .logo{
+                    width: 50px;
+                }
+
+            }
+        }
+
+    }
+
+
+
+
+}

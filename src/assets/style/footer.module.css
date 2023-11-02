@@ -1,0 +1,13 @@
+#footer{
+    background: #303321;
+    width: 100%;
+    color: #e0e0e0;
+    padding: 1rem 0;
+    text-align: center;
+
+    & div > *{
+        opacity: .85;
+        font-size: .875rem;
+    }
+
+}
