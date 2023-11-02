@@ -1,48 +1,21 @@
-import { Form } from "react-router-dom";
+import styles from "../assets/style/index.module.css";
+import utilityStyles from "../assets/style/utilities.module.css";
+import CreationForm from "../components/CreationForm.jsx";
 
 function Index() {
   return (
-    <section className={"container"}>
-      <h2>Create Employee</h2>
+    <section id={styles["index"]}>
+      <div className={`${utilityStyles.wrapper} ${styles.content}`}>
+        <header>
+          <h2>Create Employee</h2>
 
-      <Form method="post" action="/">
-        <label for="first-name">First Name</label>
-        <input type="text" id="first-name" />
-
-        <label for="last-name">Last Name</label>
-        <input type="text" id="last-name" />
-
-        <label for="date-of-birth">Date of Birth</label>
-        <input id="date-of-birth" type="text" />
-
-        <label for="start-date">Start Date</label>
-        <input id="start-date" type="text" />
-
-        <fieldset className="address">
-          <legend>Address</legend>
-
-          <label for="street">Street</label>
-          <input id="street" type="text" />
-
-          <label for="city">City</label>
-          <input id="city" type="text" />
-
-          <label for="state">State</label>
-          <select name="state" id="state"></select>
-
-          <label for="zip-code">Zip Code</label>
-          <input id="zip-code" type="number" />
-        </fieldset>
-
-        <label for="department">Department</label>
-        <select name="department" id="department">
-          <option>Sales</option>
-          <option>Marketing</option>
-          <option>Engineering</option>
-          <option>Human Resources</option>
-          <option>Legal</option>
-        </select>
-      </Form>
+          <button className={styles.btn}>Save</button>
+        </header>
+        <CreationForm className={styles.form} />
+      </div>
+      <div id="confirmation" className={`${styles.modal}`}>
+        Employee Created!
+      </div>
     </section>
   );
 }
