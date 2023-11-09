@@ -1,7 +1,20 @@
+import { useEffect, useRef } from "react";
 import { Form } from "react-router-dom";
 import styles from "../assets/style/form.module.css";
+import { states } from "../utilities/states.js";
 
 function CreationForm({ className }) {
+  const department = useRef(null);
+  const state = useRef(null);
+
+  useEffect(() => {
+    $(department.current).selectmenu();
+    $(state.current)
+      .selectmenu()
+      .selectmenu("menuWidget")
+      .addClass(styles["select-overflow"]);
+  }, []);
+
   return (
     <Form className={`${className}`} method="post" action="/">
       <div className={`${styles["input-group"]}`}>
@@ -55,7 +68,11 @@ function CreationForm({ className }) {
           <label className={styles.label} htmlFor="state">
             State
           </label>
-          <select name="state" id="state"></select>
+          <select name="state" id="state" ref={state}>
+            {states.map((stat, index) => {
+              return <option value={stat.abbreviation}>{stat.name}</option>;
+            })}
+          </select>
         </div>
 
         <div className={`${styles["input-container"]}`}>
@@ -86,7 +103,7 @@ function CreationForm({ className }) {
           <label className={styles.label} htmlFor="department">
             Department
           </label>
-          <select name="department" id="department">
+          <select name="department" id="department" ref={department}>
             <option>Sales</option>
             <option>Marketing</option>
             <option>Engineering</option>
