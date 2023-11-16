@@ -1,0 +1,77 @@
+.datatable{
+
+    & > table{
+
+        border-collapse: collapse;
+        border-spacing: 0;
+        width: 100%;
+
+        & > thead{
+            font-weight: 500;
+            text-transform: capitalize;
+            text-align: center;
+
+            & td{
+                padding: 1rem;
+                cursor: pointer;
+            }
+
+        }
+
+        & > tbody{
+
+            border-top: 1px solid #000;
+            border-bottom: 1px solid #000;
+
+            & > tr:nth-child(odd){
+                background: rgba(0 0 0 / 10%);
+            }
+
+            & > tr:hover{
+                background: rgba(0 0 0 / 22%);
+            }
+
+            & td.filtering-cell, & td:first-child{
+                background: rgba(0 0 0 / 5%);
+            }
+
+            & td{
+                padding: 1rem .75rem;
+            }
+
+
+        }
+
+    }
+
+    & footer{
+        padding: 1rem 0 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        & button{
+
+            padding: .5rem .75rem;
+            border: none;
+            background: #BCDB1F;
+            color: #fff;
+            font-weight: 500;
+            font-size: 1rem;
+
+            &:not(:last-child){
+                margin-right: .5rem;
+            }
+            &:not(:disabled){
+                cursor: pointer;
+            }
+            &:disabled{
+                opacity: .5;
+            }
+
+
+        }
+
+    }
+
+}

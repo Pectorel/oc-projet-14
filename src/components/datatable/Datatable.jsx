@@ -12,10 +12,11 @@
  *
  *
  */
-import DTRow from "./DTRow.jsx";
 import { useEffect, useState } from "react";
+import DTRow from "./DTRow.jsx";
+import style from "../../assets/style/datatable.module.css";
 
-function Datatable({ data, options = { perPage: 10 } }) {
+function Datatable({ data, className, options = { perPage: 10 } }) {
   const [page, setPage] = useState(() => {
     return 0;
   });
@@ -66,9 +67,16 @@ function Datatable({ data, options = { perPage: 10 } }) {
   };
 
   return (
-    <div>
+    <div className={`${className} ${style.datatable}`}>
       <table>
-        <thead></thead>
+        <thead>
+          <tr>
+            {Object.keys(data[0]).map((key) => {
+              key = key.replaceAll(new RegExp("-", "g"), " ");
+              return <td>{key}</td>;
+            })}
+          </tr>
+        </thead>
         <tbody>
           {data
             .slice(options.perPage * page, options.perPage * (page + 1))
