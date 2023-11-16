@@ -1,15 +1,14 @@
 /**
  *
- * Objectives : Renders only visible Row to speed up the calculation
+ * Objectives : Renders only visible Row at first to speed up the calculation
  * But Store all data for filtering purpose
- * By default, stores by array index
+ * By default sort by array index
  *
  *
  * Ideas :
+ *  - Add item per page - DONE
  *  - Add default sort attribute
- *  - Add item per page
- *  - Try to render only new rows and keep the existing rows
- *
+ *  - Try to render only new rows and keep the existing rows on pagination and filtering
  *
  */
 import { useEffect, useState } from "react";
@@ -31,8 +30,8 @@ function Datatable({ data, className, options = { perPage: 10 } }) {
     let stop = false;
 
     do {
-      i++;
       if (data.length <= options.perPage * i) stop = true;
+      else i++;
     } while (!stop);
 
     setMaxPage(i - 1);
@@ -57,7 +56,11 @@ function Datatable({ data, className, options = { perPage: 10 } }) {
     const pages = [];
     for (let i = 0; i <= maxPage; i++) {
       pages.push(
-        <button onClick={() => goToPage(i)} disabled={page === i}>
+        <button
+          className={style["pagination-btn"]}
+          onClick={() => goToPage(i)}
+          disabled={page === i}
+        >
           {i + 1}
         </button>,
       );
@@ -87,7 +90,7 @@ function Datatable({ data, className, options = { perPage: 10 } }) {
       </table>
       <footer>
         <span>
-          Showing {options.perPage * page} to {getLastRowIndex()} of&nbsp;
+          Showing {options.perPage * page + 1} to {getLastRowIndex()} of&nbsp;
           {data.length} entries
         </span>
 

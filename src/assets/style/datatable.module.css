@@ -69,6 +69,15 @@
                 opacity: .5;
             }
 
+            &.pagination-btn{
+
+                &:disabled{
+                    opacity: 1;
+                    background: #9DB81A;
+                }
+
+            }
+
 
         }
 
