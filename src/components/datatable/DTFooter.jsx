@@ -1,9 +1,9 @@
 import style from "../../assets/style/datatable.module.css";
 
-function DTFooter({ page, maxPage, options, setPage, dataLength }) {
+function DTFooter({ page, maxPage, perPage, setPage, dataLength }) {
   const getLastRowIndex = () => {
-    let res = options.perPage * (page + 1);
-    if (dataLength < options.perPage * (page + 1)) res = dataLength;
+    let res = perPage * (page + 1);
+    if (dataLength < perPage * (page + 1)) res = dataLength;
     return res;
   };
 
@@ -36,7 +36,7 @@ function DTFooter({ page, maxPage, options, setPage, dataLength }) {
   return (
     <footer>
       <span>
-        Showing {options.perPage * page + 1} to {getLastRowIndex()} of&nbsp;
+        Showing {perPage * page + 1} to {getLastRowIndex()} of&nbsp;
         {dataLength} entries
       </span>
 

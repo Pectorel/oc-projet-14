@@ -1,4 +1,9 @@
-function DTHead({ headRow = {} }) {
+/**
+ *
+ * - TODO : ADD Sort ASC and DESC on each key (Add sort option to disable or enable it)
+ *
+ * */
+function DTHead({ headRow = {}, options = { sort: true } }) {
   return (
     <thead>
       <tr>

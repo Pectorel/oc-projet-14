@@ -17,6 +17,7 @@ import DTRow from "./DTRow.jsx";
 import DTHead from "./DTHead.jsx";
 import style from "../../assets/style/datatable.module.css";
 import DTFooter from "./DTFooter.jsx";
+import DTFilters from "./DTFilters.jsx";
 
 function Datatable({ data, className, options = { perPage: 10 } }) {
   const [page, setPage] = useState(() => {
@@ -27,38 +28,41 @@ function Datatable({ data, className, options = { perPage: 10 } }) {
     return 1;
   });
 
+  const [perPage, setPerPage] = useState(() => {
+    return options.perPage;
+  });
+
   useEffect(() => {
     // Calculating max pages
     let i = 1;
     let stop = false;
 
     do {
-      if (data.length <= options.perPage * i) stop = true;
+      if (data.length <= perPage * i) stop = true;
       else i++;
     } while (!stop);
 
     setMaxPage(i - 1);
-  }, []);
+  }, [perPage]);
 
   return (
     <div className={`${className} ${style.datatable}`}>
+      <DTFilters setPerPage={setPerPage} />
       <table>
         <DTHead headRow={data[0]} />
         <tbody>
-          {data
-            .slice(options.perPage * page, options.perPage * (page + 1))
-            .map((row) => {
-              return <DTRow row={row} />;
-            })}
+          {data.slice(perPage * page, perPage * (page + 1)).map((row) => {
+            return <DTRow row={row} />;
+          })}
         </tbody>
-        <DTFooter
-          page={page}
-          maxPage={maxPage}
-          setPage={setPage}
-          options={options}
-          dataLength={data.length}
-        />
       </table>
+      <DTFooter
+        page={page}
+        maxPage={maxPage}
+        setPage={setPage}
+        perPage={perPage}
+        dataLength={data.length}
+      />
     </div>
   );
 }
