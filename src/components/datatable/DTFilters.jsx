@@ -1,12 +1,20 @@
-function DTFilters({ setPerPage, options = { entries: true, search: true } }) {
+function DTFilters({
+  setPerPage,
+  setSearch,
+  options = { entries: true, search: true },
+}) {
   const changeEntries = ({ target }) => {
     setPerPage(parseInt(target.value));
   };
 
+  const changeSearch = ({ target }) => {
+    setSearch(target.value);
+  };
+
   return (
-    <div>
+    <header>
       {options.entries ? (
-        <div>
+        <label>
           Show&nbsp;
           <select name="entries" id="entries" onChange={changeEntries}>
             <option value="10">10</option>
@@ -15,9 +23,15 @@ function DTFilters({ setPerPage, options = { entries: true, search: true } }) {
             <option value="100">100</option>
           </select>
           &nbsp;entries
-        </div>
+        </label>
       ) : null}
-    </div>
+      {options.search ? (
+        <label>
+          Search:&nbsp;
+          <input type="search" onChange={changeSearch} />
+        </label>
+      ) : null}
+    </header>
   );
 }
 
