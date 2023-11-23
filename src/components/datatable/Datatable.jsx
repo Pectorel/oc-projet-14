@@ -42,7 +42,10 @@ function Datatable({ data, className, options = { perPage: 10 } }) {
       else i++;
     } while (!stop);
 
-    setMaxPage(i - 1);
+    i -= 1;
+    setMaxPage(i);
+
+    if (page >= i) setPage(i);
   }, [perPage]);
 
   return (
