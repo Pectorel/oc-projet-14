@@ -6,7 +6,7 @@
 
 import style from "../../assets/style/datatable.module.css";
 
-function DTHead({ headRow = {}, options = { sort: true } }) {
+function DTHead({ setSort, headRow = {}, options = { sort: true } }) {
   const changeSort = ({ target }) => {
     if (!options.sort) return false;
     let icon = target.querySelector(`.${style["sort-icon"]}`);
@@ -15,13 +15,20 @@ function DTHead({ headRow = {}, options = { sort: true } }) {
       if (cell !== icon) cell.classList.remove(style["asc"], style["desc"]);
     });
 
+    let order = "asc";
     if (icon.classList.contains(style["asc"])) {
       icon.classList.remove(style["asc"]);
       icon.classList.add(style["desc"]);
+      order = "desc";
     } else {
       icon.classList.remove(style["desc"]);
       icon.classList.add(style["asc"]);
     }
+
+    setSort({
+      field: target.getAttribute("data-sort"),
+      order,
+    });
   };
 
   return (
@@ -29,10 +36,10 @@ function DTHead({ headRow = {}, options = { sort: true } }) {
       <tr>
         {Object.keys(headRow).length > 0
           ? Object.keys(headRow).map((key, index) => {
-              key = key.replaceAll(new RegExp("-", "g"), " ");
+              name = key.replaceAll(new RegExp("-", "g"), " ");
               return (
-                <td key={index} onClick={changeSort}>
-                  {key}
+                <td data-sort={key} key={index} onClick={changeSort}>
+                  {name}
                   {options.sort ? <i className={style["sort-icon"]}></i> : null}
                 </td>
               );

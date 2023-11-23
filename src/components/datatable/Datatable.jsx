@@ -36,8 +36,10 @@ function Datatable({ data, className, options = { perPage: 10 } }) {
   });
 
   const [sortBy, setSortBy] = useState(() => {
-    return 0;
+    return null;
   });
+
+  data = [...data];
 
   useEffect(() => {
     // Calculating max pages
@@ -56,11 +58,32 @@ function Datatable({ data, className, options = { perPage: 10 } }) {
   }, [perPage, search]);
 
   /**
+   * Function to get sorted data based on sorting criteria.
+   *
+   * @function getSortedData
+   * @returns {Array} - The sorted data array.
+   */
+  const getSortedData = () => {
+    if (sortBy != null) {
+      console.log("Sorting");
+      return data.sort((a, b) => {
+        if (sortBy.order === "asc")
+          return a[sortBy.field].localeCompare(b[sortBy.field]);
+        console.log("Desc");
+        return b[sortBy.field].localeCompare(a[sortBy.field]);
+      });
+    }
+    return data;
+  };
+
+  /**
    * Retrieves rows to show based on search input if any.
+   * @function getRowsToShow
    * @return {array} - Array of rows to show.
    */
   const getRowsToShow = () => {
     let res = [];
+    data = getSortedData();
     if (typeof search == "string" && search.length >= 2) {
       for (let row of data) {
         for (let field in row) {
@@ -80,7 +103,7 @@ function Datatable({ data, className, options = { perPage: 10 } }) {
     <div className={`${className} ${style.datatable}`}>
       <DTFilters setPerPage={setPerPage} setSearch={setSearch} />
       <table>
-        <DTHead headRow={data[0]} />
+        <DTHead setSort={setSortBy} headRow={data[0]} />
         <tbody>
           {getRowsToShow()
             .slice(perPage * page, perPage * (page + 1))

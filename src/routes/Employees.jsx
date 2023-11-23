@@ -4,7 +4,7 @@ import utilityStyles from "../assets/style/utilities.module.css";
 import Datatable from "../components/datatable/Datatable.jsx";
 
 function Employees() {
-  const list = useSelector((state) => state.employees.list);
+  const data = useSelector((state) => state.employees.list);
 
   return (
     <section id={styles["employees-list"]}>
@@ -12,7 +12,7 @@ function Employees() {
         <header>
           <h2>Current Employees</h2>
         </header>
-        <Datatable data={list} className={styles.datatable} />
+        <Datatable data={data} className={styles.datatable} />
       </div>
     </section>
   );
