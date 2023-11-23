@@ -35,6 +35,10 @@ function Datatable({ data, className, options = { perPage: 10 } }) {
     return null;
   });
 
+  const [sortBy, setSortBy] = useState(() => {
+    return 0;
+  });
+
   useEffect(() => {
     // Calculating max pages
     let i = 1;
@@ -51,6 +55,10 @@ function Datatable({ data, className, options = { perPage: 10 } }) {
     if (page >= i) setPage(i);
   }, [perPage, search]);
 
+  /**
+   * Retrieves rows to show based on search input if any.
+   * @return {array} - Array of rows to show.
+   */
   const getRowsToShow = () => {
     let res = [];
     if (typeof search == "string" && search.length >= 2) {
@@ -76,8 +84,8 @@ function Datatable({ data, className, options = { perPage: 10 } }) {
         <tbody>
           {getRowsToShow()
             .slice(perPage * page, perPage * (page + 1))
-            .map((row) => {
-              return <DTRow row={row} />;
+            .map((row, key) => {
+              return <DTRow row={row} key={key} />;
             })}
         </tbody>
       </table>

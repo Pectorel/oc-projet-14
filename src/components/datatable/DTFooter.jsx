@@ -24,6 +24,7 @@ function DTFooter({ page, maxPage, perPage, setPage, dataLength }) {
           className={style["pagination-btn"]}
           onClick={() => goToPage(i)}
           disabled={page === i}
+          key={`page_${i}`}
         >
           {i + 1}
         </button>,
