@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import styles from "../assets/style/employees-list.module.css";
 import utilityStyles from "../assets/style/utilities.module.css";
-import Datatable from "../components/datatable/Datatable.jsx";
+import Datatable from "react-datatable-light/Datatable";
 
 function Employees() {
   const data = useSelector((state) => state.employees.list);
