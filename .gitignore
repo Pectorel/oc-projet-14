@@ -24,4 +24,4 @@ dist-ssr
 *.sw?
 
 #Unit Testing
-coverage/*
+coverage
