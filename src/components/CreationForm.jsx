@@ -136,7 +136,7 @@ function CreationForm({ className, formRef }) {
           <input
             className={styles["input-field"]}
             id="zip-code"
-            type="number"
+            type="text"
             name="zip-code"
             required
           />
