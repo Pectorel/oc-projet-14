@@ -29,7 +29,7 @@ function CreationForm({ className, formRef }) {
     });
   }, []);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData(formRef.current);
 
@@ -39,7 +39,7 @@ function CreationForm({ className, formRef }) {
       employee[field[0]] = field[1];
     }
 
-    dispatch(add(employee));
+    await dispatch(add(employee));
   };
 
   return (

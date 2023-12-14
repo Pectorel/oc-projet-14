@@ -6,8 +6,9 @@ import { useEffect, useRef } from "react";
 function Index() {
   const form = useRef(null);
 
-  const submitForm = () => {
-    form.current.requestSubmit();
+  const submitForm = async () => {
+    await form.current.requestSubmit();
+    $("#confirmation").modal();
   };
 
   return (
