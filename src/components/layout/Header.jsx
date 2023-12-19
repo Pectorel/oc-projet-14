@@ -10,7 +10,7 @@ function Header() {
           <NavLink to={"/"}>
             <img
               className={styles.logo}
-              src="/img/logo.png"
+              src="/img/logo.webp"
               alt="Wealth Health Logo"
             />
             <span>HRnet</span>
