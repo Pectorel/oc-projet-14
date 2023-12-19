@@ -12,8 +12,8 @@ dependencies:
     specifier: ^18.2.0
     version: 18.2.0
   react-datatable-light:
-    specifier: ^1.2.0
-    version: 1.2.0
+    specifier: ^1.3.0
+    version: 1.3.0
   react-dom:
     specifier: ^18.2.0
     version: 18.2.0(react@18.2.0)
@@ -2953,8 +2953,8 @@ packages:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
     dev: true
 
-  /react-datatable-light@1.2.0:
-    resolution: {integrity: sha512-9Pp+HbjXckp+zniM6lS2ljeKhbwuTRzvwyjlb2KUAifpWKkCjHJz5OxJh9B6qZMrUtkw69+iaC9I/xbJyV98Zg==}
+  /react-datatable-light@1.3.0:
+    resolution: {integrity: sha512-jZwiYRNlPnA9FSXRALE4VQyXSORGP2hc+NVcGngHKqZKq1efzgMWfbRmWCEfyYze7+buZqV5E+DBWs63GqFM8g==}
     dev: false
 
   /react-dom@18.2.0(react@18.2.0):

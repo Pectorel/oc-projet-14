@@ -1,7 +1,7 @@
 import styles from "../assets/style/index.module.css";
 import utilityStyles from "../assets/style/utilities.module.css";
 import CreationForm from "../components/CreationForm.jsx";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 
 function Index() {
   const form = useRef(null);
